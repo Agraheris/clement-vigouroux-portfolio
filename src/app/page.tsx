@@ -1,9 +1,11 @@
-import React from 'react'
+import Navbar from "./components/Navbar"
 
-function page() {
+
+export default function Home() {
   return (
-    <div>page</div>
+    <div className="min-h-screen">
+      <Navbar />
+      <h1>Portfolio Clément en construction</h1>
+    </div>
   )
 }
-
-export default page
