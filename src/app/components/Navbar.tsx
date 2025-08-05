@@ -1,14 +1,20 @@
 import React from 'react'
-import test from '../illustration/test.png'
+import Image from 'next/image'
+
 function Navbar() {
   return (
     <nav>
-        <img src="images/test.png" alt='logo' />
-        <ul>
-            <li>Portfolio</li>
-            <li>Alternance CDA</li>
-            <li>Contact</li>
-        </ul>
+      <Image 
+        src="/images/logo.webp" 
+        alt="logo" 
+        width={40}
+        height={40} 
+      />
+      <ul>
+        <li>Portfolio</li>
+        <li>Alternance CDA</li>
+        <li>Contact</li>
+      </ul>
     </nav>
   )
 }
