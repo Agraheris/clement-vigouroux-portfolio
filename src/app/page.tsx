@@ -18,7 +18,6 @@ export default function Home() {
       <Alternance />
       <Contact />
       </main>
-      <h1>Portfolio Clément en construction</h1>
     </div>
   )
 }
