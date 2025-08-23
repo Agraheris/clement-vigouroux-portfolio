@@ -56,24 +56,6 @@ Portfolio personnel développé avec **Next.js 14 + TypeScript**, mettant en ava
 - **En production** avec client satisfait
 - Formation client sur interface d'administration
 
-### 🎬 [MoodFlix](https://github.com/Agraheris/moodflix) - **Projet Collaboratif**
-**React | JavaScript | API Integration**
-- Application de recommandation de films par humeur
-- Travail d'équipe, méthodologie Agile
-- Intégration API The Movie Database
-
-### 🎮 [Dino Space Survivor](https://github.com/Agraheris/dino-space-survivor) - **Hackathon 72h**
-**JavaScript | Phaser.js | Game Development**
-- Jeu de survie spatial en équipe de 5
-- Challenge créatif et technique intensif
-- Game mechanics et animations
-
-### 🎨 [Virtuart](https://github.com/Agraheris/virtuart) - **Fullstack**
-**React | Express.js | MySQL**
-- Plateforme de galerie d'art virtuelle
-- Architecture fullstack complète
-- Base de données relationnelle
-
 ---
 
 ## 🎯 Spécialisation : Accessibilité Web
