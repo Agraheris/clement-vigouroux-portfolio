@@ -38,7 +38,7 @@ export default function AutoA11ySection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 } // Réduit le threshold pour mobile
+      { threshold: 0.1 }
     );
 
     const section = document.getElementById('auto-a11y-section');
@@ -54,7 +54,6 @@ export default function AutoA11ySection() {
     >
       <div className="max-w-6xl mx-auto px-4">
         
-        {/* Header */}
         <div className={`text-center mb-12 md:mb-16 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
@@ -74,10 +73,8 @@ export default function AutoA11ySection() {
           </p>
         </div>
 
-        {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
-          {/* Left: Problem & Vision */}
           <div className={`transform transition-all duration-1000 delay-400 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
@@ -111,7 +108,6 @@ export default function AutoA11ySection() {
               </div>
             </div>
 
-            {/* Roadmap */}
             <div className="mt-8 p-4 md:p-6 bg-gradient-to-r from-[#14B8A6]/5 to-[#059669]/5 rounded-xl border border-[#14B8A6]/20">
               <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 🚀 Roadmap de développement
@@ -136,13 +132,11 @@ export default function AutoA11ySection() {
             </div>
           </div>
 
-          {/* Right: Code Example */}
           <div className={`transform transition-all duration-1000 delay-600 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
             <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
               
-              {/* Terminal Header */}
               <div className="bg-gray-800 px-4 md:px-6 py-3 md:py-4 flex items-center gap-3">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -152,7 +146,6 @@ export default function AutoA11ySection() {
                 <span className="text-gray-300 text-xs md:text-sm font-mono">LoginForm.tsx</span>
               </div>
 
-              {/* Code Content */}
               <div className="p-4 md:p-6 overflow-x-auto">
                 <pre className="text-xs md:text-sm text-gray-300 font-mono leading-relaxed">
                   <code dangerouslySetInnerHTML={{ __html: 
@@ -171,7 +164,6 @@ export default function AutoA11ySection() {
               </div>
             </div>
 
-            {/* Benefits */}
             <div className="mt-6 bg-gradient-to-r from-[#14B8A6]/10 to-[#059669]/10 rounded-xl p-4 md:p-6 border border-[#14B8A6]/20">
               <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                 <span className="text-[#14B8A6]">🔬</span>
@@ -200,7 +192,6 @@ export default function AutoA11ySection() {
 
         </div>
 
-        {/* Quote Section - Hidden on mobile */}
         <div className={`mt-16 md:mt-20 text-center transform transition-all duration-1000 delay-800 hidden md:block ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
