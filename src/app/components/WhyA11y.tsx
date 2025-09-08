@@ -28,7 +28,6 @@ export default function WhyAccessibility() {
     >
       <div className="max-w-4xl mx-auto px-4">
         
-        {/* Header */}
         <div className={`text-center mb-12 md:mb-16 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
@@ -42,10 +41,8 @@ export default function WhyAccessibility() {
           </h2>
         </div>
 
-        {/* Main Story */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           
-          {/* Left: Story */}
           <div className={`transform transition-all duration-1000 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
@@ -120,7 +117,6 @@ export default function WhyAccessibility() {
 
           </div>
 
-          {/* Right: Impact Visual */}
           <div className={`transform transition-all duration-1000 delay-600 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
@@ -185,7 +181,6 @@ export default function WhyAccessibility() {
 
         </div>
 
-        {/* Bottom: Vision & Commitment */}
         <div className={`transform transition-all duration-1000 delay-900 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
