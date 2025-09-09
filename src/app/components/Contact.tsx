@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 const contactMethods = [
   {
@@ -42,6 +43,8 @@ const quickFacts = [
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,12 +76,47 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:clement.vigouroux@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company}\n\nMessage:\n${formData.message}`
-    )}`;
-    window.location.href = mailtoLink;
+    setIsLoading(true);
+    setStatusMessage('');
+
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Variables d\'environnement EmailJS manquantes');
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      setStatusMessage('Message envoyé avec succès ! Je vous répondrai rapidement.');
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Erreur:', error);
+      setStatusMessage('Erreur lors de l\'envoi. Essayez de m\'écrire directement à clem.it.systems@gmail.com');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -132,8 +170,8 @@ export default function ContactSection() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors resize-vertical placeholder:text-gray-600"                      
-placeholder="Votre nom"
+                      className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600 text-gray-600"
+                      placeholder="Votre nom"
                     />
                   </div>
                   
@@ -148,7 +186,7 @@ placeholder="Votre nom"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600"
+                      className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600 text-gray-600"
                       placeholder="votre@email.com"
                     />
                   </div>
@@ -165,7 +203,7 @@ placeholder="Votre nom"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600"
+                      className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600 text-gray-600"
                       placeholder="Nom de votre entreprise"
                     />
                   </div>
@@ -180,7 +218,7 @@ placeholder="Votre nom"
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] text-gray-600 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors placeholder:text-gray-600 text-gray-600"
                     >
                       <option value="">Sélectionnez un sujet</option>
                       <option value="Alternance CDA">Alternance CDA</option>
@@ -203,20 +241,44 @@ placeholder="Votre nom"
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors resize-vertica placeholder:text-gray-600 text-gray-600"
+                    className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-[#14B8A6] focus:border-transparent transition-colors resize-vertical placeholder:text-gray-600 text-gray-600"
                     placeholder="Décrivez votre projet, vos besoins ou votre question..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#14B8A6] hover:bg-[#0D9488] text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+                  disabled={isLoading}
+                  className={`w-full px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 ${
+                    isLoading 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-[#14B8A6] hover:bg-[#0D9488] text-white'
+                  }`}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  Envoyer le message
+                  {isLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      Envoyer le message
+                    </>
+                  )}
                 </button>
+
+                {statusMessage && (
+                  <div className={`mt-4 p-4 rounded-lg ${
+                    statusMessage.includes('succès') 
+                      ? 'bg-green-50 text-green-800 border border-green-200' 
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                  }`}>
+                    {statusMessage}
+                  </div>
+                )}
               </form>
             </div>
           </div>
@@ -296,7 +358,7 @@ placeholder="Votre nom"
         }`}>
           <div className="bg-gradient-to-r from-[#fff9ec] to-white rounded-2xl p-8 border border-[#F59E0B]/20">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Créons ensemble un web plus accessible ! 🌟
+              Créons ensemble un web plus accessible !
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Que ce soit pour un projet freelance, une alternance ou simplement échanger sur l'accessibilité web, 
