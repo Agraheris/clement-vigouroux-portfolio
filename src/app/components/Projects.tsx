@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 const projects = [
   {
     id: 1,
-    title: "Les Papillons Énergétiques",
+    title: "Le Papillon Énergétique",
     category: "Professional",
     type: "Projet Client",
     description: "Refonte complète d'un site Wix en solution moderne Next.js avec CMS Sanity pour une praticienne en soins énergétiques. Premier projet de ma micro-entreprise.",
