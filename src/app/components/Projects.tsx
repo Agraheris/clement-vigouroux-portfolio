@@ -208,7 +208,7 @@ export default function ProjectsSection() {
                 <div className="mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3">Fonctionnalités clés :</h4>
                   <ul className="space-y-2">
-                    {project.features.slice(0, 3).map((feature, idx) => (
+                    {project.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
                         <span className="w-1.5 h-1.5 bg-[#14B8A6] rounded-full"></span>
                         {feature}
@@ -252,12 +252,6 @@ export default function ProjectsSection() {
                     </svg>
                     Code source
                   </a>
-                  
-                  {project.category === 'Professional' && (
-                    <button className="px-4 py-3 border-2 border-[#F59E0B] text-[#F59E0B] hover:bg-[#F59E0B] hover:text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 text-sm">
-                      En savoir plus
-                    </button>
-                  )}
                 </div>
               </div>
             </div>

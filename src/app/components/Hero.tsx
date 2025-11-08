@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 const rotatingTexts = [
   "Développeur accessible",
   "Expert en inclusion numérique",
-  "Créateur d'auto-a11y"
 ];
 
 
