@@ -214,11 +214,6 @@ export default function ProjectsSection() {
                         {feature}
                       </li>
                     ))}
-                    {project.features.length > 3 && (
-                      <li className="text-sm text-gray-500 ml-4">
-                        +{project.features.length - 3} autres fonctionnalités
-                      </li>
-                    )}
                   </ul>
                 </div>
 
