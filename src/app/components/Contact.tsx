@@ -36,7 +36,7 @@ const contactMethods = [
 
 const quickFacts = [
   { label: "Localisation", value: "Montpellier, France", icon: "📍" },
-  { label: "Disponibilité", value: "Septembre 2025", icon: "📅" },
+  { label: "Disponibilité", value: "Debut 2026", icon: "📅" },
   { label: "Statut", value: "Recherche alternance", icon: "🎯" },
   { label: "Spécialité", value: "Accessibilité web", icon: "♿" }
 ];

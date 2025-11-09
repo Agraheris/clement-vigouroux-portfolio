@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 const skills = [
   "Compréhension solide des enjeux d'accessibilité",
-  "Expérience pratique avec auto-a11y",
+  "Expérience client",
   "Capacité à identifier les problèmes WCAG",
   "Motivation forte pour l'inclusion numérique"
 ];
@@ -208,7 +208,7 @@ export default function AlternanceSection() {
               <div className="text-2xl">📅</div>
               <h4 className="text-xl font-bold">Disponibilité</h4>
             </div>
-            <p className="text-lg mb-4">Septembre 2025</p>
+            <p className="text-lg mb-4">Debut 2026</p>
             <p className="text-sm opacity-90">
               Rythme d'alternance flexible selon les besoins de l'entreprise. 
               Formation CDA de 12 à 24 mois.
